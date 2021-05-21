@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block head%}
+<title>WorkRook</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+   <a href="/">
+      <h1 style="text-align: Center; color: White;">WorkRoom</h1>
+   </a>
+   <br><br><br>
+   <div class="row">
+      <div class="col-md-5">
+         <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col" class="thtext table-danger bg-danger" style="color: white;">Temperature</th>
+                <th scope="col" class="thtext table-info bg-info" style="color: white;">Humidity</th>
+                <th scope="col" class="thtext table-warning bg-warning" style="color: white;">Room Size</th>
+                <th scope="col" class="thtext table-success bg-success"style="color: white;">Time</th>
+              </tr>
+            </thead>
+         </table>
+      </div>
+      <div class="col-md">
+         <a href='https://pngtree.com/so/success-clipart'>
+            <img class="img-fluid" src="{{ url_for('static',filename='img/work.png') }}" >
+         </a>
+         
+      </div>
+   </div>
+</div>
+{% endblock %}
