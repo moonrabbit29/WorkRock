@@ -1,34 +1,95 @@
-{% extends 'base.html' %}
-
-{% block head%}
+{% extends 'base.html' %} {% block head%}
 <title>WorkRock</title>
-{% endblock %}
-
-{% block body %}
+{% endblock %} {% block body %}
+<script type="text/javascript" src="/public/scripts/style.js"></script>
 <div class="container">
-   <a href="/">
-      <h1 style="text-align: Center; color: White;">WorkRock</h1>
-   </a>
-   <br><br><br>
-   <div class="row">
-      <div class="col-md-5">
-         <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th scope="col" class="thtext table-danger bg-danger" style="color: white;">Temperature</th>
-                <th scope="col" class="thtext table-info bg-info" style="color: white;">Humidity</th>
-                <th scope="col" class="thtext table-warning bg-warning" style="color: white;">Room Size</th>
-                <th scope="col" class="thtext table-success bg-success"style="color: white;">Time</th>
-              </tr>
-            </thead>
-         </table>
-      </div>
-      <div class="col-md">
-         <a href='https://pngtree.com/so/success-clipart'>
-            <img class="img-fluid" src="{{ url_for('static',filename='img/work.png') }}" >
-         </a>
-         
-      </div>
-   </div>
+  <a href="/">
+    <h1 style="text-align: Center; color: White">WorkRock</h1>
+  </a>
+  <br /><br /><br />
+  <div class="row">
+    <div class="col-md-7">
+      <table class="table">
+        <thead>
+          <tr>
+            <th
+              scope="col"
+              class="thtext table-danger bg-danger"
+              style="color: white"
+            >
+              Room Temperature
+            </th>
+            <th
+              scope="col"
+              class="thtext table-info bg-info"
+              style="color: white"
+            >
+              Outside Temperature
+            </th>
+            <th
+              scope="col"
+              class="thtext table-warning bg-warning"
+              style="color: white"
+            >
+              Number of people
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="height: 300px">
+              <div class="container-input-temperature" style="margin-left: 0px">
+                <input
+                  type="text"
+                  id="textInput"
+                  style="max-width: 30px; margin-left: 20px"
+                  value="1"
+                />
+                <br /><br />
+                <input
+                  class="range vertical-lowest-first"
+                  type="range"
+                  min="0"
+                  max="40"
+                  step="0.1"
+                  onchange="updateTextInput(this.value);"
+                />
+                <br /><br /><br />
+              </div>
+            </td>
+            <td style="height: 300px">
+              <div class="container-input-temperature" style="margin-left: 0px">
+                <input
+                  type="text"
+                  id="textInput"
+                  style="max-width: 30px; margin-left: 20px; font-size: 15px"
+                  value="1"
+                />
+                <br /><br />
+                <input
+                  class="range vertical-lowest-first"
+                  type="range"
+                  min="15"
+                  max="35"
+                  step="0.1"
+                  onchange="updateTextInput(this.value);"
+                />
+                <br /><br /><br />
+              </div>
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md">
+      <a href="https://pngtree.com/so/success-clipart">
+        <img
+          class="img-fluid"
+          src="{{ url_for('static',filename='img/work.png') }}"
+        />
+      </a>
+    </div>
+  </div>
 </div>
 {% endblock %}
