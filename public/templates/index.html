@@ -41,8 +41,8 @@
               <div class="container-input-temperature" style="margin-left: 0px">
                 <input
                   type="text"
-                  id="textInput"
-                  style="max-width: 30px; margin-left: 20px"
+                  id="textInputInside"
+                  style="max-width: 48px; margin-left: 20px; font-size: 13px;"
                   value="1"
                 />
                 <br /><br />
@@ -52,7 +52,8 @@
                   min="0"
                   max="40"
                   step="0.1"
-                  onchange="updateTextInput(this.value);"
+                  onchange="updateTextInsideTemp(this.value);"
+                  id="insideTemp"
                 />
                 <br /><br /><br />
               </div>
@@ -61,8 +62,8 @@
               <div class="container-input-temperature" style="margin-left: 0px">
                 <input
                   type="text"
-                  id="textInput"
-                  style="max-width: 30px; margin-left: 20px; font-size: 15px"
+                  id="textInputOutside"
+                  style="max-width: 48px; margin-left: 20px; font-size: 13px"
                   value="1"
                 />
                 <br /><br />
@@ -72,7 +73,8 @@
                   min="15"
                   max="35"
                   step="0.1"
-                  onchange="updateTextInput(this.value);"
+                  onchange="updateTextOutsideTemp(this.value);"
+                  id="outsideTemp"
                 />
                 <br /><br /><br />
               </div>
@@ -92,4 +94,18 @@
     </div>
   </div>
 </div>
+
+<script>
+  let prevInsideTemp = 0;
+  let prevOutsideTemp  = 0; 
+  setInterval(()=>{
+    const insideTemp = parseInt($('#textInputOutside').val().split("°")[0])
+    const outsideTemp = parseInt($('#textInputInside').val().split("°")[0])
+    if(prevInsideTemp!==insideTemp || prevOutsideTemp!==outsideTemp){
+      prevOutsideTemp=outsideTemp
+      prevInsideTemp = insideTemp
+      
+    }
+  },4000)
+</script>
 {% endblock %}

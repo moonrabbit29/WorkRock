@@ -12,10 +12,9 @@ body {
 
  input[type=range].range {
   cursor: pointer;
-  width: 150px !important;
+  width: 200px !important;
   -webkit-appearance: none;
   z-index: 200;
-  width: 70px;
   border: 1px solid #e6e6e6;
   background-color: #e6e6e6;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e6e6e6), to(#d2d2d2));
@@ -24,7 +23,7 @@ body {
   background-image: -ms-linear-gradient(right, #e6e6e6, #d2d2d2);
   background-image: -o-linear-gradient(right, #e6e6e6, #d2d2d2);
   margin-left: 15px;
-  margin-top: 55px;
+  margin-top: 85px;
 }
 
 input[type=range].range:focus {
@@ -57,11 +56,11 @@ input[type=range].round::-webkit-slider-thumb {
 }
 
 .vertical-lowest-first {
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg)
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg)
 }
 
 

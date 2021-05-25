@@ -1,6 +1,7 @@
 from flask import Flask,render_template,request,redirect,send_file
 from datetime import datetime
 import os
+from fuzzy import Fuzzy
 
 
 app = Flask(__name__, template_folder='public/templates')
@@ -18,4 +19,10 @@ def index():
       return render_template("index.html")
    if request.method == 'POST':
       print(request.body);
+
+@app.route('/getAcTemp',methods=['POST'])
+def getAcTemp():
+   data = request.get_json()
+   print(data)
+   #Fuzzy.valueIinitialization(data.)
 

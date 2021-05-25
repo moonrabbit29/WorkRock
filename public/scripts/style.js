@@ -1,5 +1,7 @@
-function updateTextInput(val) {
-   document.getElementById('textInput').value=val; 
-   console.log("tess")
+function updateTextInsideTemp(val) {
+   document.getElementById('textInputInside').value=val +"°C" ; 
  }
- console.log("nani")
+ function updateTextOutsideTemp(val) {
+  document.getElementById('textInputOutside').value=val+"°C"; 
+}
+
