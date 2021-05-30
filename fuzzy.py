@@ -34,7 +34,7 @@ class RoomTemp:
          return (35-temperature)/(35-30)
    
    @classmethod
-   def warmMemberSetter(cls,temperature):
+   def hotMemberSetter(cls,temperature):
       if(temperature>30 and temperature<=35):
          return (temperature-30)/(35-30)
       elif(temperature>35 and temperature<40):
@@ -52,6 +52,42 @@ class RoomTemp:
                          cls.normalMemberSetter(temperature))
       cls.hotMember = (0 if(temperature<=30 or temperature>=40) else
                          cls.warmMemberSetter(temperature))
+
+class outsideTemp:
+   mildMember = 0
+   normalMember = 0
+   warmMember = 0
+
+   @classmethod
+   def mildMemberSetter(cls,temperature):
+      if(temperature>15 and temperature<=20):
+         return (temperature-15)/(20-15)
+      elif(temperature>10 and temperature<20):
+         return (25-temperature)/(25-20)
+   
+   @classmethod
+   def normalMemberSetter(cls,temperature):
+      if(temperature>20 and temperature<=25):
+         return (temperature-20)/(25-20)
+      elif(temperature>25 and temperature<30):
+         return (30-temperature)/(30-25)
+
+   @classmethod
+   def warmMemberSetter(cls,temperature):
+      if(temperature>25 and temperature<=30):
+         return (temperature-20)/(25-20)
+      elif(temperature>30 and temperature<35):
+         return (35-temperature)/(35-30)
+
+   @classmethod
+   def roomTemperatureMember(cls,temperature):
+      cls.mildMember = (0 if(temperature<=15 or temperature>=25) else 
+                        cls.mildMemberSetter(temperature))
+      cls.normalMember = (0 if(temperature<=20 or temperature>=30) else
+                         cls.normalMemberSetter(temperature))
+      cls.warmMember = (0 if(temperature<=25 or temperature>=35) else
+                         cls.normalMemberSetter(temperature))
+
 
 class Fuzzy :
    @classmethod
