@@ -42,7 +42,7 @@
                 <input
                   type="text"
                   id="textInputInside"
-                  style="max-width: 48px; margin-left: 20px; font-size: 13px;"
+                  style="max-width: 48px; margin-left: 20px; font-size: 13px"
                   value="1"
                 />
                 <br /><br />
@@ -96,16 +96,40 @@
 </div>
 
 <script>
-  let prevInsideTemp = 0;
-  let prevOutsideTemp  = 0; 
-  setInterval(()=>{
-    const insideTemp = parseInt($('#textInputOutside').val().split("°")[0])
-    const outsideTemp = parseInt($('#textInputInside').val().split("°")[0])
-    if(prevInsideTemp!==insideTemp || prevOutsideTemp!==outsideTemp){
-      prevOutsideTemp=outsideTemp
-      prevInsideTemp = insideTemp
-      
+  async function process_data(insideTemp, outsideTemp) {
+    try{
+      let temp;
+      $.ajax({
+      url: "http://localhost:5000/getAcTemp",
+      contentType: "application/json;charset=utf-8",
+      dataType   : "json",
+      data: JSON.stringify({
+        insideTemp: insideTemp,
+        outsideTemp: outsideTemp,
+      }),
+      success: function (data) {
+        temp = data['OptimalTemperature']
+      },
+      type: "POST",
+    });
+      return temp
+    }catch(err){
+      return "undifined"
     }
-  },4000)
+
+
+  }
+
+  let prevInsideTemp = 0;
+  let prevOutsideTemp = 0;
+  setInterval(async () => {
+    const insideTemp = parseInt($("#textInputOutside").val().split("°")[0]);
+    const outsideTemp = parseInt($("#textInputInside").val().split("°")[0]);
+    if (prevInsideTemp !== insideTemp || prevOutsideTemp !== outsideTemp) {
+      prevOutsideTemp = outsideTemp;
+      prevInsideTemp = insideTemp;
+      const optimalTemp = await process_data(insideTemp,outsideTemp)
+    }
+  }, 4000);
 </script>
 {% endblock %}

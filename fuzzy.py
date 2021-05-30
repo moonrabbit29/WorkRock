@@ -57,9 +57,7 @@ class Fuzzy :
    @classmethod
    def valueIinitialization(cls,roomTemp,outsideTemp,numPeople):
       RoomTemp.roomTemperatureMember(roomTemp)
-      print("{} {} {} {} {}".format(RoomTemp.coldMember,RoomTemp.hotMember,
-                           RoomTemp.mildMember,RoomTemp.warmMember,
-                           RoomTemp.normalMember))
+      
    @classmethod
    def inferensi(cls):
       pass
