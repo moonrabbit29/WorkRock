@@ -28,9 +28,9 @@ def index():
 @cross_origin()
 def getAcTemp():
    data = request.get_json()
-   print(data)
    Fuzzy.valueIinitialization(data['insideTemp'],data['outsideTemp'],0)
-   return jsonify({'OptimalTemperature': 0}),200
+   bestTemp = Fuzzy.inferensi()
+   return jsonify({'OptimalTemperature': bestTemp}),200
 
 
 app.jinja_env.globals.update(config=app.config)

@@ -123,8 +123,8 @@
   let prevInsideTemp = 0;
   let prevOutsideTemp = 0;
   setInterval(async () => {
-    const insideTemp = parseInt($("#textInputOutside").val().split("°")[0]);
-    const outsideTemp = parseInt($("#textInputInside").val().split("°")[0]);
+    const  outsideTemp= parseInt($("#textInputOutside").val().split("°")[0]);
+    const insideTemp = parseInt($("#textInputInside").val().split("°")[0]);
     if (prevInsideTemp !== insideTemp || prevOutsideTemp !== outsideTemp) {
       prevOutsideTemp = outsideTemp;
       prevInsideTemp = insideTemp;

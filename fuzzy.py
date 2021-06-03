@@ -49,11 +49,11 @@ class RoomTemp:
       cls.normalMember = (0 if(temperature<=20 or temperature>=30) else
                          cls.normalMemberSetter(temperature))
       cls.warmMember = (0 if(temperature<=25 or temperature>=35) else
-                         cls.normalMemberSetter(temperature))
-      cls.hotMember = (0 if(temperature<=30 or temperature>=40) else
                          cls.warmMemberSetter(temperature))
+      cls.hotMember = (0 if(temperature<=30 or temperature>=40) else
+                         cls.hotMemberSetter(temperature))
 
-class outsideTemp:
+class OutsideTemp:
    mildMember = 0
    normalMember = 0
    warmMember = 0
@@ -80,7 +80,7 @@ class outsideTemp:
          return (35-temperature)/(35-30)
 
    @classmethod
-   def roomTemperatureMember(cls,temperature):
+   def outsideTemperatureMember(cls,temperature):
       cls.mildMember = (0 if(temperature<=15 or temperature>=25) else 
                         cls.mildMemberSetter(temperature))
       cls.normalMember = (0 if(temperature<=20 or temperature>=30) else
@@ -93,10 +93,13 @@ class Fuzzy :
    @classmethod
    def valueIinitialization(cls,roomTemp,outsideTemp,numPeople):
       RoomTemp.roomTemperatureMember(roomTemp)
+      OutsideTemp.outsideTemperatureMember(outsideTemp)
+      #NumpeopleMember 
       
    @classmethod
    def inferensi(cls):
+      bestTemp = 0
+      return bestTemp
       pass
-
 
 
