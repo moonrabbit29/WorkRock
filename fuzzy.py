@@ -96,24 +96,24 @@ class totalPeople:
 
    @classmethod
    def littleMember(cls, people):
-      if(people>0 and people<=25):
-         return (people-0)/(25-0)
-      elif(people>-5 and people<25):
-         return (30-people)/(30-25)
+      if(people>0 and people<=15):
+         return (people-0)/(15-0)
+      elif(people>15 and people<30):
+         return (30-people)/(30-15)
    
    @classmethod
    def moderateMember(cls, people):
-      if(people>15 and people<=40):
-         return (people-15)/(40-15)
-      elif(people>10 and people<40):
-         return (45-people)/(45-40)
+      if(people>15 and people<=30):
+         return (people-15)/(30-15)
+      elif(people>30 and people<45):
+         return (45-people)/(45-30)
 
    @classmethod
    def manyMember(cls, people):
-      if(people>30 and people<=50):
-         return (people-30)/(50-30)
-      elif(people>25 and people<50):
-         return (50-people)/(50-25)
+      if(people>30 and people<=45):
+         return (people-30)/(45-30)
+      elif(people>45 and people<55):
+         return (55-people)/(45-55)
    
    @classmethod()
    def totalPeopleMember(cls,people):
