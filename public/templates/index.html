@@ -38,7 +38,7 @@
         <tbody>
           <tr>
             <td style="height: 300px">
-              <div class="container-input-temperature" style="margin-left: 0px">
+              <div class="container-input" style="margin-left: 0px">
                 <input
                   type="text"
                   id="textInputInside"
@@ -59,7 +59,7 @@
               </div>
             </td>
             <td style="height: 300px">
-              <div class="container-input-temperature" style="margin-left: 0px">
+              <div class="container-input" style="margin-left: 0px">
                 <input
                   type="text"
                   id="textInputOutside"
@@ -79,7 +79,27 @@
                 <br /><br /><br />
               </div>
             </td>
-            <td></td>
+            <td>
+              <div class="container-input" style="margin-left: 0px">
+                <input
+                  type="text"
+                  id="textInputPeople"
+                  style="max-width: 48px; margin-left: 20px; font-size: 13px"
+                  value="1"
+                />
+                <br /><br />
+                <input
+                  class="range vertical-lowest-first"
+                  type="range"
+                  min="0"
+                  max="55"
+                  step="1"
+                  onchange="updateTextPeople(this.value);"
+                  id="peopleInput"
+                />
+                <br /><br /><br />
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -96,7 +116,7 @@
 </div>
 
 <script>
-  async function process_data(insideTemp, outsideTemp) {
+  async function process_data(insideTemp, outsideTemp,people) {
     try{
       let temp;
       $.ajax({
@@ -106,6 +126,7 @@
       data: JSON.stringify({
         insideTemp: insideTemp,
         outsideTemp: outsideTemp,
+        people : people
       }),
       success: function (data) {
         temp = data['OptimalTemperature']
@@ -122,13 +143,16 @@
 
   let prevInsideTemp = 0;
   let prevOutsideTemp = 0;
+  let previousPeople =0 
   setInterval(async () => {
     const  outsideTemp= parseInt($("#textInputOutside").val().split("°")[0]);
     const insideTemp = parseInt($("#textInputInside").val().split("°")[0]);
-    if (prevInsideTemp !== insideTemp || prevOutsideTemp !== outsideTemp) {
+    const people = parseInt ($("#peopleInput").val())
+    if (prevInsideTemp !== insideTemp || prevOutsideTemp !== outsideTemp || previousPeople != people ) {
       prevOutsideTemp = outsideTemp;
       prevInsideTemp = insideTemp;
-      const optimalTemp = await process_data(insideTemp,outsideTemp)
+      previousPeople = people;
+      const optimalTemp = await process_data(insideTemp,outsideTemp,people)
     }
   }, 4000);
 </script>

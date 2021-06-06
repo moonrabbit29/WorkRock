@@ -28,7 +28,7 @@ def index():
 @cross_origin()
 def getAcTemp():
    data = request.get_json()
-   Fuzzy.valueIinitialization(data['insideTemp'],data['outsideTemp'],0)
+   Fuzzy.valueIinitialization(data['insideTemp'],data['outsideTemp'],data['people'])
    bestTemp = Fuzzy.inferensi()
    return jsonify({'OptimalTemperature': bestTemp}),200
 

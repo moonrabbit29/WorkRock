@@ -64,7 +64,7 @@ input[type=range].round::-webkit-slider-thumb {
 }
 
 
-.container-input-temperature {
+.container-input {
   flex-direction: column;
   padding-top: 10px;
   text-align: center;
