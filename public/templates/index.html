@@ -130,10 +130,11 @@
       }),
       success: function (data) {
         temp = data['OptimalTemperature']
+        console.log(temp)
       },
       type: "POST",
     });
-      return temp
+      
     }catch(err){
       return "undifined"
     }

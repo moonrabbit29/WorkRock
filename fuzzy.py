@@ -1,3 +1,6 @@
+from typing import Dict
+
+
 class RoomTemp:
    coldMember = 0
    mildMember = 0
@@ -184,9 +187,9 @@ class Fuzzy :
       if(OutsideTemp.normalMember>0 and TotalPeople.moderateMember>0) : 
          cls.quiteMildSetter(RoomTemp.coldMember,OutsideTemp.normalMember,TotalPeople.moderateMember)
       
-      #rule 6 (salah di TotalPeople)
+      #rule 6 
       if(OutsideTemp.normalMember>0 and TotalPeople.manyMember>0):
-         cls.mildSetter(RoomTemp.coldMember,OutsideTemp.normalMember,TotalPeople.moderateMember)
+         cls.mildSetter(RoomTemp.coldMember,OutsideTemp.normalMember,TotalPeople.manyMember)
       
       #rule 7
       if(OutsideTemp.warmMember>0 and TotalPeople.fewMember>0) :
@@ -254,21 +257,21 @@ class Fuzzy :
       if(OutsideTemp.mildMember>0 and TotalPeople.moderateMember>0):
          cls.quiteMildSetter(RoomTemp.normalMember,OutsideTemp.mildMember,TotalPeople.moderateMember)
       
-      #rule 21 (salah di TotalPeople)
+      #rule 21 
       if(OutsideTemp.mildMember>0 and TotalPeople.manyMember>0):
-         cls.mildSetter(RoomTemp.normalMember,OutsideTemp.mildMember,TotalPeople.moderateMember)
+         cls.mildSetter(RoomTemp.normalMember,OutsideTemp.mildMember,TotalPeople.manyMember)
       
       #rule 22
       if(OutsideTemp.normalMember>0  and TotalPeople.fewMember>0):
          cls.mildSetter(RoomTemp.normalMember,OutsideTemp.normalMember,TotalPeople.fewMember)
 
-      #rule 23 (salah di TotalPeople)
+      #rule 23 
       if(OutsideTemp.normalMember>0 and TotalPeople.moderateMember>0):
-         cls.mildSetter(RoomTemp.normalMember,OutsideTemp.normalMember,TotalPeople.fewMember)
+         cls.mildSetter(RoomTemp.normalMember,OutsideTemp.normalMember,TotalPeople.moderateMember)
       
-      #rule 24 (salah di TotalPeople)
+      #rule 24 
       if(OutsideTemp.normalMember>0 and TotalPeople.manyMember>0):
-         cls.quiteColdSetter(RoomTemp.normalMember,OutsideTemp.normalMember,TotalPeople.fewMember)
+         cls.quiteColdSetter(RoomTemp.normalMember,OutsideTemp.normalMember,TotalPeople.manyMember)
       
       #rule 25
       if(OutsideTemp.warmMember>0 and TotalPeople.fewMember>0):
@@ -284,9 +287,9 @@ class Fuzzy :
       
    
    #rule 28-36 
-
+   #roomtemp pasti warm
    @classmethod
-   def warCheck(cls):
+   def warmCheck(cls):
 
       #rule 28
       if(OutsideTemp.mildMember>0 and TotalPeople.fewMember>0):
@@ -325,9 +328,52 @@ class Fuzzy :
          cls.coldSetter(RoomTemp.warmMember,OutsideTemp.warmMember,TotalPeople.manyMember)
 
    @classmethod
+   def membershipOfOutput(cls,lBound,upBound,x) :
+      a = (upBound-x)/(x-lBound)
+      return (upBound-x)/(x-lBound)
+
+   @classmethod
    def defuzzifikasi(cls,maxList):
-      print(maxList)
-      pass
+      numerator = 0
+      denominator = 0 
+      sample = [12,13,14,15,16,17,18,19,20,21,22,23,24]
+      # sampleCold = [12,13,14,15,16]
+      # sampleQuiteCold = [16,17,18]
+      # sampleMild = [18,19,20]
+      # sampleQuiteMild = [20,21,22]
+      # sampleNormal = [22,23,24]
+      membershipOutput = {1:[12,13,14,15,16],2:[16,17,18],3:[18,19,20],4:[20,21,22],5:[22,23,24]}
+      
+      checkLst = []
+      
+      #create list of tuple for sample that are in between two outpu fuzzy graph
+      lstTuple = []
+
+      for key,value in maxList.items() : 
+         if value>0 : 
+            checkLst.append(key)
+      for i in range(len(checkLst)):
+         try :
+            if(checkLst[i+1] - checkLst [i] == 1):
+               for e in membershipOutput[checkLst[i]] : 
+                  if(e in membershipOutput[checkLst[i+1]]):
+                     membershipOutput[checkLst[i]].remove(e)
+                     lstTuple.append((e,cls.membershipOfOutput(membershipOutput[checkLst[i+1]][0]-1,
+                                             membershipOutput[checkLst[i+1]][-1]+1,e)))
+
+         except Exception as e: 
+            break
+      
+      for i in checkLst : 
+         numerator += sum(membershipOutput[i]) * maxList[i]
+         denominator += len(membershipOutput[i])*maxList[i]
+      for i,tuplee in lstTuple:
+         numerator+= i * tuplee
+         denominator += tuplee
+      
+      return numerator/denominator 
+         
+      
 
    @classmethod
    def inferensi(cls):
@@ -344,17 +390,23 @@ class Fuzzy :
       if(RoomTemp.hotMember>0):
          pass
    
-
+      #keterangan 
+      # 1:cold
+      # 2:quiteCold
+      # 3:mild
+      # 4:quiteMild
+      # 5: normal
       maxList = list() 
-      maxList.append(max(cls.cold))  if(cls.cold) else maxList.append(0)
-      maxList.append(max(cls.quiteCold)) if(cls.quiteCold) else maxList.append(0)
-      maxList.append(max(cls.mild)) if(cls.mild)  else maxList.append(0)
-      maxList.append(max(cls.quiteMild)) if(cls.quiteMild) else maxList.append(0)
-      maxList.append(max(cls.normal))if(cls.normal) else maxList.append(0)
+      maxList.append((1,max(cls.cold)))  if(cls.cold) else maxList.append((1,0))
+      maxList.append((2,max(cls.quiteCold))) if(cls.quiteCold) else maxList.append((2,0))
+      maxList.append((3,max(cls.mild))) if(cls.mild)  else maxList.append((3,0))
+      maxList.append((4,max(cls.quiteMild))) if(cls.quiteMild) else maxList.append((4,0))
+      maxList.append((5,max(cls.normal)))if(cls.normal) else maxList.append((5,0))
 
-      cls.defuzzifikasi(maxList)
-
-
+      maxDictionary = dict()
+      for a, b in maxList:
+         maxDictionary.setdefault(a,b)
+      bestTemp = cls.defuzzifikasi(maxDictionary)
       return bestTemp
       
 
