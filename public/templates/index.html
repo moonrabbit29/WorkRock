@@ -42,8 +42,8 @@
                 <input
                   type="text"
                   id="textInputInside"
-                  style="max-width: 48px; margin-left: 20px; font-size: 13px"
-                  value="1"
+                  style="width: 80%; margin-left: 20px; font-size: 15px; text-align: center;"
+                  value="0"
                 />
                 <br /><br />
                 <input
@@ -63,8 +63,8 @@
                 <input
                   type="text"
                   id="textInputOutside"
-                  style="max-width: 48px; margin-left: 20px; font-size: 13px"
-                  value="1"
+                  style="width: 80%; margin-left: 20px; font-size: 15px; text-align: center;"
+                  value="0"
                 />
                 <br /><br />
                 <input
@@ -84,8 +84,8 @@
                 <input
                   type="text"
                   id="textInputPeople"
-                  style="max-width: 48px; margin-left: 20px; font-size: 13px"
-                  value="1"
+                  style="width: 80%; margin-left: 20px; font-size: 15px; text-align: center;"
+                  value="0"
                 />
                 <br /><br />
                 <input
@@ -114,6 +114,11 @@
     </div>
   </div>
 </div>
+<div class="bg-navbar">
+  <div class="navbar-melayang" style="text-align: center;">
+    <h2 id="fuzzyOutput">0 °C </h2>
+  </div>
+</div>
 
 <script>
   async function process_data(insideTemp, outsideTemp,people) {
@@ -130,7 +135,9 @@
       }),
       success: function (data) {
         temp = data['OptimalTemperature']
-        console.log(temp)
+        console.log(`temp :${temp} `)
+        changeOutputTemperature(temp)
+
       },
       type: "POST",
     });
@@ -148,8 +155,10 @@
   setInterval(async () => {
     const  outsideTemp= parseInt($("#textInputOutside").val().split("°")[0]);
     const insideTemp = parseInt($("#textInputInside").val().split("°")[0]);
-    const people = parseInt ($("#peopleInput").val())
-    if (prevInsideTemp !== insideTemp || prevOutsideTemp !== outsideTemp || previousPeople != people ) {
+    const people = parseInt ($("#textInputPeople").val())
+    if ((prevInsideTemp !== insideTemp || prevOutsideTemp !== outsideTemp || previousPeople !== people ) && (
+      insideTemp !== 0 && outsideTemp !== 0 && people !== 0
+    )) {
       prevOutsideTemp = outsideTemp;
       prevInsideTemp = insideTemp;
       previousPeople = people;

@@ -9,3 +9,10 @@ function updateTextPeople(val) {
   document.getElementById('textInputPeople').value=val; 
 }
 
+function changeOutputTemperature(val){
+ const h4 =  $("#fuzzyOutput")[0]
+ const str = val +" °C"
+  h4.innerHTML = str
+
+}
+
