@@ -345,40 +345,40 @@ class Fuzzy :
    def hotCheck(cls):
 
    #rule 37
-   if(OutsideTemp.mildMember>0 and TotalPeople.fewMember>0):
-         cls.MildSetter(RoomTemp.HotMember,OutsideTemp.mildMember,TotalPeople.fewMember)
-   
-   #rule 38
-   if(OutsideTemp.mildMember>0 and TotalPeople.moderateMember>0):
-         cls.MildSetter(RoomTemp.HotMember,OutsideTemp.mildMember,TotalPeople.moderateMember)
+      if(OutsideTemp.mildMember>0 and TotalPeople.fewMember>0):
+            cls.MildSetter(RoomTemp.HotMember,OutsideTemp.mildMember,TotalPeople.fewMember)
+      
+      #rule 38
+      if(OutsideTemp.mildMember>0 and TotalPeople.moderateMember>0):
+            cls.MildSetter(RoomTemp.HotMember,OutsideTemp.mildMember,TotalPeople.moderateMember)
 
-   #rule 39
-   if(OutsideTemp.mildMember>0 and TotalPeople.manyMember>0):
-         cls.quiteColdSetter(RoomTemp.HotMember,OutsideTemp.mildMember,TotalPeople.manyMember)
-   
-   #rule 40
-   if(OutsideTemp.normalMember>0 and TotalPeople.fewMember>0):
-         cls.quiteColdSetter(RoomTemp.HotMember,OutsideTemp.normalMember,TotalPeople.fewMember)
-   
-   #rule 41
-   if(OutsideTemp.normalMember>0 and TotalPeople.moderateMember>0):
-         cls.quiteColdSetter(RoomTemp.HotMember,OutsideTemp.normalMember,TotalPeople.moderateMember)
+      #rule 39
+      if(OutsideTemp.mildMember>0 and TotalPeople.manyMember>0):
+            cls.quiteColdSetter(RoomTemp.HotMember,OutsideTemp.mildMember,TotalPeople.manyMember)
+      
+      #rule 40
+      if(OutsideTemp.normalMember>0 and TotalPeople.fewMember>0):
+            cls.quiteColdSetter(RoomTemp.HotMember,OutsideTemp.normalMember,TotalPeople.fewMember)
+      
+      #rule 41
+      if(OutsideTemp.normalMember>0 and TotalPeople.moderateMember>0):
+            cls.quiteColdSetter(RoomTemp.HotMember,OutsideTemp.normalMember,TotalPeople.moderateMember)
 
-   #rule 42
-   if(OutsideTemp.normalMember>0 and TotalPeople.manyMember>0):
-         cls.coldSetter(RoomTemp.HotMember,OutsideTemp.normalMember,TotalPeople.manyMember)
-   
-   #rule 43
-   if(OutsideTemp.warmMember>0 and TotalPeople.fewMember>0):
-         cls.coldSetter(RoomTemp.HotMember,OutsideTemp.warmMember,TotalPeople.fewMember)
-   
-   #rule 44
-   if(OutsideTemp.warmMember>0 and TotalPeople.moderateMember>0):
-         cls.coldSetter(RoomTemp.HotMember,OutsideTemp.warmMember,TotalPeople.moderateMember)
+      #rule 42
+      if(OutsideTemp.normalMember>0 and TotalPeople.manyMember>0):
+            cls.coldSetter(RoomTemp.HotMember,OutsideTemp.normalMember,TotalPeople.manyMember)
+      
+      #rule 43
+      if(OutsideTemp.warmMember>0 and TotalPeople.fewMember>0):
+            cls.coldSetter(RoomTemp.HotMember,OutsideTemp.warmMember,TotalPeople.fewMember)
+      
+      #rule 44
+      if(OutsideTemp.warmMember>0 and TotalPeople.moderateMember>0):
+            cls.coldSetter(RoomTemp.HotMember,OutsideTemp.warmMember,TotalPeople.moderateMember)
 
-   #rule 45
-   if(OutsideTemp.warmMember>0 and TotalPeople.manyMember>0):
-         cls.coldSetter(RoomTemp.HotMember,OutsideTemp.warmMember,TotalPeople.manyMember)
+      #rule 45
+      if(OutsideTemp.warmMember>0 and TotalPeople.manyMember>0):
+            cls.coldSetter(RoomTemp.HotMember,OutsideTemp.warmMember,TotalPeople.manyMember)
 
 
 
