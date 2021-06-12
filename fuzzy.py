@@ -135,6 +135,19 @@ class Fuzzy :
    quiteMild = list()
    normal = list()
    listOfUsedRule = list()
+   linguisticValueOfRule = list()
+
+   @classmethod
+   def getInsideTemp(cls) :
+      return {'cold' : RoomTemp.coldMember,'mild':RoomTemp.mildMember,'normal':RoomTemp.normalMember,'warm':RoomTemp.warmMember,'hot':RoomTemp.hotMember}
+   
+   @classmethod
+   def getOutsideTemp(cls):
+      return {'mild':OutsideTemp.mildMember,'normal':OutsideTemp.mildMember,'warm':OutsideTemp.warmMember}
+   
+   @classmethod
+   def getPeople(cls):
+      return {'few':TotalPeople.fewMember,'moderate':TotalPeople.moderateMember,'manyMember':TotalPeople.manyMember}
 
    @classmethod
    def valueIinitialization(cls,roomTemp,outsideTemp,numPeople):
@@ -144,22 +157,27 @@ class Fuzzy :
    
    @classmethod
    def normalSetter(cls,a,b,c) : 
+      cls.linguisticValueOfRule.append((a,b,c))
       cls.normal.append(min(a,b,c))
    
    @classmethod
    def quiteColdSetter(cls,a,b,c) :
+      cls.linguisticValueOfRule.append((a,b,c))
       cls.quiteCold.append(min(a,b,c))
 
    @classmethod
    def quiteMildSetter(cls,a,b,c) :
+      cls.linguisticValueOfRule.append((a,b,c))
       cls.quiteMild.append(min(a,b,c))
 
    @classmethod
    def mildSetter(cls,a,b,c) :
+      cls.linguisticValueOfRule.append((a,b,c))
       cls.mild.append(min(a,b,c))
    
    @classmethod
    def coldSetter(cls,a,b,c):
+      cls.linguisticValueOfRule.append((a,b,c))
       cls.cold.append(min(a,b,c))
    
 
@@ -232,30 +250,37 @@ class Fuzzy :
       #rule 12
       if(OutsideTemp.mildMember>0 and TotalPeople.manyMember>0) : 
          cls.mildSetter(RoomTemp.mildMember,OutsideTemp.mildMember,TotalPeople.manyMember)
+         cls.listOfUsedRule.append(12)
       
       #rule 13
       if(OutsideTemp.normalMember>0 and TotalPeople.fewMember>0) : 
          cls.mildSetter(RoomTemp.mildMember,OutsideTemp.normalMember,TotalPeople.fewMember)
+         cls.listOfUsedRule.append(13)
       
       #rule 14
       if(OutsideTemp.normalMember>0 and TotalPeople.moderateMember>0) : 
          cls.mildSetter(RoomTemp.mildMember,OutsideTemp.normalMember,TotalPeople.moderateMember)
+         cls.listOfUsedRule.append(14)
       
       #rule 15
       if(OutsideTemp.normalMember>0 and TotalPeople.manyMember>0) :
          cls.quiteColdSetter(RoomTemp.mildMember,OutsideTemp.normalMember,TotalPeople.manyMember)
+         cls.listOfUsedRule.append(15)
       
       #rule 16
       if(OutsideTemp.warmMember>0 and TotalPeople.fewMember>0):
          cls.quiteColdSetter(RoomTemp.mildMember,OutsideTemp.warmMember,TotalPeople.fewMember)
+         cls.listOfUsedRule.append(16)
       
       #rule 17
       if(OutsideTemp.warmMember>0 and TotalPeople.moderateMember>0):
          cls.quiteColdSetter(RoomTemp.mildMember,OutsideTemp.warmMember,TotalPeople.moderateMember)
+         cls.listOfUsedRule.append(17)
       
       #rule 18
       if(OutsideTemp.warmMember>0 and TotalPeople.manyMember>0) :
          cls.coldSetter(RoomTemp.mildMember,OutsideTemp.warmMember,TotalPeople.manyMember)
+         cls.listOfUsedRule.append(18)
    
    #rule 19 - 27
    #inside Temp / room temp pasti normal
@@ -264,38 +289,47 @@ class Fuzzy :
       #rule 19
       if(OutsideTemp.mildMember>0 and TotalPeople.fewMember>0):
          cls.quiteMildSetter(RoomTemp.normalMember,OutsideTemp.mildMember,TotalPeople.fewMember)
+         cls.listOfUsedRule.append(19)
       
       #rule 20
       if(OutsideTemp.mildMember>0 and TotalPeople.moderateMember>0):
          cls.quiteMildSetter(RoomTemp.normalMember,OutsideTemp.mildMember,TotalPeople.moderateMember)
+         cls.listOfUsedRule.append(20)
       
       #rule 21 
       if(OutsideTemp.mildMember>0 and TotalPeople.manyMember>0):
          cls.mildSetter(RoomTemp.normalMember,OutsideTemp.mildMember,TotalPeople.manyMember)
+         cls.listOfUsedRule.append(21)
       
       #rule 22
       if(OutsideTemp.normalMember>0  and TotalPeople.fewMember>0):
          cls.mildSetter(RoomTemp.normalMember,OutsideTemp.normalMember,TotalPeople.fewMember)
+         cls.listOfUsedRule.append(22)
 
       #rule 23 
       if(OutsideTemp.normalMember>0 and TotalPeople.moderateMember>0):
          cls.mildSetter(RoomTemp.normalMember,OutsideTemp.normalMember,TotalPeople.moderateMember)
+         cls.listOfUsedRule.append(23)
       
       #rule 24 
       if(OutsideTemp.normalMember>0 and TotalPeople.manyMember>0):
          cls.quiteColdSetter(RoomTemp.normalMember,OutsideTemp.normalMember,TotalPeople.manyMember)
+         cls.listOfUsedRule.append(24)
       
       #rule 25
       if(OutsideTemp.warmMember>0 and TotalPeople.fewMember>0):
          cls.quiteColdSetter(RoomTemp.normalMember,OutsideTemp.warmMember,TotalPeople.fewMember)
+         cls.listOfUsedRule.append(25)
       
       #rule 26
       if(OutsideTemp.warmMember>0 and TotalPeople.moderateMember>0) :
          cls.quiteColdSetter(RoomTemp.normalMember,OutsideTemp.warmMember,TotalPeople.moderateMember)
+         cls.listOfUsedRule.append(26)
       
       #rule 27 
       if(OutsideTemp.warmMember> 0  and TotalPeople.manyMember>0):
          cls.coldSetter(RoomTemp.normalMember,OutsideTemp.warmMember,TotalPeople.manyMember)
+         cls.listOfUsedRule.append(27)
       
    
    #rule 28-36 
@@ -306,38 +340,47 @@ class Fuzzy :
       #rule 28
       if(OutsideTemp.mildMember>0 and TotalPeople.fewMember>0):
          cls.quiteMildSetter(RoomTemp.warmMember,OutsideTemp.mildMember,TotalPeople.fewMember)
+         cls.listOfUsedRule.append(28)
       
       #rule 29
       if(OutsideTemp.mildMember>0 and TotalPeople.moderateMember>0):
          cls.quiteMildSetter(RoomTemp.warmMember,OutsideTemp.mildMember,TotalPeople.moderateMember)
+         cls.listOfUsedRule.append(29)
       
       #rule 30
       if(OutsideTemp.mildMember>0 and TotalPeople.manyMember>0):
          cls.mildSetter(RoomTemp.warmMember,OutsideTemp.mildMember,TotalPeople.manyMember)
+         cls.listOfUsedRule.append(30)
       
       #rule 31
       if(OutsideTemp.normalMember>0 and TotalPeople.fewMember>0) : 
          cls.mildSetter(RoomTemp.warmMember,OutsideTemp.normalMember,TotalPeople.fewMember)
+         cls.listOfUsedRule.append(31)
 
       #rule 32
       if(OutsideTemp.normalMember>0 and TotalPeople.moderateMember>0) : 
          cls.mildSetter(RoomTemp.warmMember,OutsideTemp.normalMember,TotalPeople.moderateMember)
+         cls.listOfUsedRule.append(32)
       
       #rule 33
       if(OutsideTemp.normalMember>0 and TotalPeople.manyMember>0) : 
          cls.quiteColdSetter(RoomTemp.warmMember,OutsideTemp.normalMember,TotalPeople.manyMember)
+         cls.listOfUsedRule.append(33)
       
       #rule 34
       if(OutsideTemp.warmMember>0 and TotalPeople.fewMember>0):
          cls.quiteColdSetter(RoomTemp.warmMember,OutsideTemp.warmMember,TotalPeople.fewMember)
+         cls.listOfUsedRule.append(34)
       
       #rule 35 
       if(OutsideTemp.warmMember>0 and TotalPeople.moderateMember>0) :
          cls.quiteColdSetter(RoomTemp.warmMember,OutsideTemp.warmMember,TotalPeople.moderateMember)
+         cls.listOfUsedRule.append(35)
       
       #rule 36
       if(OutsideTemp.warmMember> 0 and TotalPeople.manyMember>0):
          cls.coldSetter(RoomTemp.warmMember,OutsideTemp.warmMember,TotalPeople.manyMember)
+         cls.listOfUsedRule.append(36)
 
    #Rule 37-45
    #roomtemp Hot
@@ -347,38 +390,47 @@ class Fuzzy :
    #rule 37
       if(OutsideTemp.mildMember>0 and TotalPeople.fewMember>0):
             cls.MildSetter(RoomTemp.HotMember,OutsideTemp.mildMember,TotalPeople.fewMember)
+            cls.listOfUsedRule.append(37)
       
       #rule 38
       if(OutsideTemp.mildMember>0 and TotalPeople.moderateMember>0):
             cls.MildSetter(RoomTemp.HotMember,OutsideTemp.mildMember,TotalPeople.moderateMember)
+            cls.listOfUsedRule.append(38)
 
       #rule 39
       if(OutsideTemp.mildMember>0 and TotalPeople.manyMember>0):
             cls.quiteColdSetter(RoomTemp.HotMember,OutsideTemp.mildMember,TotalPeople.manyMember)
+            cls.listOfUsedRule.append(39)
       
       #rule 40
       if(OutsideTemp.normalMember>0 and TotalPeople.fewMember>0):
             cls.quiteColdSetter(RoomTemp.HotMember,OutsideTemp.normalMember,TotalPeople.fewMember)
+            cls.listOfUsedRule.append(40)
       
       #rule 41
       if(OutsideTemp.normalMember>0 and TotalPeople.moderateMember>0):
             cls.quiteColdSetter(RoomTemp.HotMember,OutsideTemp.normalMember,TotalPeople.moderateMember)
+            cls.listOfUsedRule.append(41)
 
       #rule 42
       if(OutsideTemp.normalMember>0 and TotalPeople.manyMember>0):
             cls.coldSetter(RoomTemp.HotMember,OutsideTemp.normalMember,TotalPeople.manyMember)
+            cls.listOfUsedRule.append(42)
       
       #rule 43
       if(OutsideTemp.warmMember>0 and TotalPeople.fewMember>0):
             cls.coldSetter(RoomTemp.HotMember,OutsideTemp.warmMember,TotalPeople.fewMember)
+            cls.listOfUsedRule.append(43)
       
       #rule 44
       if(OutsideTemp.warmMember>0 and TotalPeople.moderateMember>0):
             cls.coldSetter(RoomTemp.HotMember,OutsideTemp.warmMember,TotalPeople.moderateMember)
+            cls.listOfUsedRule.append(44)
 
       #rule 45
       if(OutsideTemp.warmMember>0 and TotalPeople.manyMember>0):
             cls.coldSetter(RoomTemp.HotMember,OutsideTemp.warmMember,TotalPeople.manyMember)
+            cls.listOfUsedRule.append(45)
 
 
 

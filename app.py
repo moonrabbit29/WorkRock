@@ -24,13 +24,26 @@ def index():
    if request.method == 'POST':
       print(request.body);
 
-@app.route('/getAcTemp',methods=['POST'])
+@app.route('/api/getAcTemp',methods=['POST'])
 @cross_origin()
 def getAcTemp():
    data = request.get_json()
    Fuzzy.valueIinitialization(data['insideTemp'],data['outsideTemp'],data['people'])
    bestTemp = Fuzzy.inferensi()
    return jsonify({'OptimalTemperature': bestTemp}),200
+
+@app.route('/calculation',methods=['GET'])
+@cross_origin()
+def calculation():
+   return render_template('calculation.html')
+
+@app.route('/api/get-calculation',methods=['GET'])
+@cross_origin()
+def getCalculation():
+   data = {'rules' : Fuzzy.listOfUsedRule,'insideTempMember':Fuzzy.getInsideTemp(),
+      'outsideTempMember':Fuzzy.getOutsideTemp(),'peopleMember':Fuzzy.getPeople()}
+   return jsonify(data),200
+
 
 
 app.jinja_env.globals.update(config=app.config)

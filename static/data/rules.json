@@ -1,0 +1,12 @@
+{
+   "1" :
+   {
+      "rules" : "If suhu_ruangan = dingin and suhu_luar_ruangan = sejuk and orang_dalam_ruangan = sedikit Then Suhu_ac = normal",
+      "description" : "dingin sejuk sedikit"
+   },
+   "2":
+   {
+      
+   }
+
+}

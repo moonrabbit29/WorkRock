@@ -1,13 +1,24 @@
 {% extends 'base.html' %} {% block head%}
 <title>WorkRock</title>
 {% endblock %} {% block body %}
+<nav class="navbar navbar-expand-lg navbar-light  bg-dark">
+  <a class="navbar-brand text-light">WorkRock </a>
+  <ul class="navbar-nav mr-5">
+    <li class="nav-item active">
+      <a class="nav-link text-white" href="/">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" href="/calculation">Show calculation</a>
+    </li>
+  </ul>
+</nav>
 <script type="text/javascript" src="/public/scripts/style.js"></script>
 <div class="container">
   <a href="/">
     <h1 style="text-align: Center; color: White">WorkRock</h1>
   </a>
   <br /><br /><br />
-  <div class="row">
+  <div class="row fade-in">
     <div class="col-md-7">
       <table class="table">
         <thead>
@@ -115,7 +126,7 @@
   </div>
 </div>
 <div class="bg-navbar">
-  <div class="navbar-melayang" style="text-align: center;">
+  <div class="navbar-melayang fade-in" style="text-align: center;">
     <h2 id="fuzzyOutput">0 °C </h2>
   </div>
 </div>
@@ -125,7 +136,7 @@
     try{
       let temp;
       $.ajax({
-      url: "http://localhost:5000/getAcTemp",
+      url: "http://localhost:5000/api/getAcTemp",
       contentType: "application/json;charset=utf-8",
       dataType   : "json",
       data: JSON.stringify({

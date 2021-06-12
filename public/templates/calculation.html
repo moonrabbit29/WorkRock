@@ -1,0 +1,70 @@
+{% extends 'base.html' %} {% block head%}
+<title>WorkRock</title>
+{% endblock %} {% block body %}
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <a class="navbar-brand font-weight-medium text-light">WorkRock</a>
+  <ul class="navbar-nav mr-5">
+    <li class="nav-item active">
+      <a class="nav-link text-white" href="/">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" href="/calculation">Show calculation</a>
+    </li>
+  </ul>
+</nav>
+<div class="container">
+  <a href="/">
+    <h1 style="text-align: Center; color: White">WorkRock</h1>
+  </a>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-4">
+      <a href="https://pngtree.com/so/success-clipart">
+        <img
+          class="img-fluid"
+          src="{{ url_for('static',filename='img/work.png') }}"
+        />
+      </a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div
+      id="fuzzificationResultContainer"
+      class="mb-5 fade-in"
+    >
+      <h3 class="mt-5 font-weight-bold text-center text-light">
+        Hasil proses fuzzifikasi
+      </h3>
+      <!-- <hr style="width: 50%;" class="text-light"> -->
+      <div id="roomTempContainer" class="row mb-3 mt-5">
+      </div>
+      <div  class="row mb-3 mt-5">
+        <div id="outsideTempContainer" class="col-6 mt-3">
+       
+        </div>
+        <div id="peopleMemberContainer" class="col-6 mt-3">
+     
+        </div>
+      </div>
+    </div>
+    <div id="ruleContainer">
+      <div class="card bg-dark">
+        <div class="row">
+          <div class="col-12">
+            <h3 class="tex-center text-danger font-weight-bold">
+              Rules yang digunakan
+            </h3>
+          </div>
+        </div>
+        <div class="inferenceResult">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script
+  type="text/javascript"
+  src="/public/scripts/calculation-styles.js"
+></script>
+{% endblock %}

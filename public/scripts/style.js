@@ -11,8 +11,7 @@ function updateTextPeople(val) {
 
 function changeOutputTemperature(val){
  const h4 =  $("#fuzzyOutput")[0]
- const str = val +" °C"
+ const str = val.toFixed(2) +" °C"
   h4.innerHTML = str
-
 }
 
