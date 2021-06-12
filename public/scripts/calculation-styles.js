@@ -1,5 +1,6 @@
 const fuzzificationResult = $("#fuzzificationResultContainer")[0]
 const rulesUsed = $("#rulesUsed")[0]
+let rulesSet;
 
 window.addEventListener('load',async ()=>{
    fuzzificationResult.hidden = true
@@ -20,15 +21,36 @@ window.addEventListener('load',async ()=>{
         roomTempHTML.innerHTML = roomTempView(roomTempMember)
         outsideTempHTML.innerHTML = outsideTempView(outsideTempMember)
         peopleHTML.innerHTML = peopleMemberView(peopleMember)
-
-         fuzzificationResult.hidden = false
+        rulesView(data.rules,data.detail)
+        fuzzificationResult.hidden = false
         
       },
       type: "GET",
     });
 })
-const rulesView = (rules,) => {
 
+var countDecimals = function (value) { 
+  if ((value % 1) != 0) 
+      return value.toString().split(".")[1].length;  
+  return 0;
+};
+
+function getRulesJSON(){
+  return $.getJSON('static/data/rules.json',(data)=>{
+    rulesSet =data
+  })
+}
+const rulesView = async (rules,detail) => {
+  try{
+    await getRulesJSON()
+    const rulesHTML = $('#setRules')[0]
+    rules.forEach((el,index) => {
+          rulesHTML.innerHTML += `<p>${el}. ${rulesSet[el].rules}</p>`
+    });
+  }catch(err){
+    console.log(err)
+  }
+ 
 }
 const peopleMemberView = (data) => {
    return `     <div class="row">
@@ -45,15 +67,15 @@ const peopleMemberView = (data) => {
          <div id="fuzzyResult ">
            <div class="d-flex justify-content-around">
              <div class="text-light text-center">
-               <h2 class="font-weight-bold">${data.few}</h2>
+               <h2 class="font-weight-bold">${data.few.toFixed(countDecimals(data.few)>=3?3:2)}</h2>
                <p>Sedikit</p>
              </div>
              <div class="text-light text-center">
-               <h2 class="font-weight-bold">${data.moderate}</h2>
+               <h2 class="font-weight-bold">${data.moderate.toFixed(countDecimals(data.moderate)>=3?3:2)}</h2>
                <p class="font-weight-bold">Sedang</p>
              </div>
              <div class="text-light text-center">
-               <h2 class="font-weight-bold">${data.manyMember}</h2>
+               <h2 class="font-weight-bold">${data.manyMember.toFixed(countDecimals(data.manyMember)>=3?3:2)}</h2>
                <p class="font-weight-bold">Banyak</p>
              </div>
            </div>
@@ -74,23 +96,23 @@ const roomTempView = (data)=>{
        <div id="fuzzyResult ">
          <div class="d-flex justify-content-around">
            <div class="text-light text-center">
-             <h2 class="font-weight-bold">${data.cold}</h2>
+             <h2 class="font-weight-bold">${data.cold.toFixed(countDecimals(data.cold)>=3?3:2)}</h2>
              <p>Dingin</p>
            </div>
            <div class="text-light text-center">
-             <h2 class="font-weight-bold">${data.mild}</h2>
+             <h2 class="font-weight-bold">${data.mild.toFixed(countDecimals(data.mild)>=3?3:2)}</h2>
              <p class="font-weight-bold">Sejuk</p>
            </div>
            <div class="text-light text-center">
-             <h2 class="font-weight-bold">${data.normal}</h2>
+             <h2 class="font-weight-bold">${data.normal.toFixed(countDecimals(data.normal)>=3?3:2)}</h2>
              <p class="font-weight-bold">Normal</p>
            </div>
            <div class="text-light text-center">
-             <h2 class="font-weight-bold">${data.warm}</h2>
+             <h2 class="font-weight-bold">${data.warm.toFixed(countDecimals(data.warm)>=3?3:2)}</h2>
              <p class="font-weight-bold">Hangat</p>
            </div>
            <div class="text-light text-center">
-             <h2 class="font-weight-bold">${data.hot}</h2>
+             <h2 class="font-weight-bold">${data.hot.toFixed(countDecimals(data.hot)>=3?3:2)}</h2>
              <p class="font-weight-bold">Panas</p>
            </div>
          </div>
@@ -113,15 +135,15 @@ const outsideTempView = (data)=>{
          <div id="fuzzyResult ">
            <div class="d-flex justify-content-around">
              <div class="text-light text-center">
-               <h2 class="font-weight-bold">${data.mild}</h2>
+               <h2 class="font-weight-bold">${data.mild.toFixed(countDecimals(data.mild)>=3?3:2)}</h2>
                <p>Sejuk</p>
              </div>
              <div class="text-light text-center">
-               <h2 class="font-weight-bold">${data.normal}</h2>
+               <h2 class="font-weight-bold">${data.normal.toFixed(countDecimals(data.normal)>=3?3:2)}</h2>
                <p class="font-weight-bold">Normal</p>
              </div>
              <div class="text-light text-center">
-               <h2 class="font-weight-bold">${data.warm}</h2>
+               <h2 class="font-weight-bold">${data.warm.toFixed(countDecimals(data.warm)>=3?3:2)}</h2>
                <p class="font-weight-bold">Hangat</p>
              </div>
            </div>

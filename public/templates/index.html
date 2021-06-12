@@ -60,8 +60,8 @@
                 <input
                   class="range vertical-lowest-first"
                   type="range"
-                  min="0"
-                  max="40"
+                  min="1"
+                  max="39"
                   step="0.1"
                   onchange="updateTextInsideTemp(this.value);"
                   id="insideTemp"
@@ -81,8 +81,8 @@
                 <input
                   class="range vertical-lowest-first"
                   type="range"
-                  min="15"
-                  max="35"
+                  min="16"
+                  max="34"
                   step="0.1"
                   onchange="updateTextOutsideTemp(this.value);"
                   id="outsideTemp"
@@ -102,8 +102,8 @@
                 <input
                   class="range vertical-lowest-first"
                   type="range"
-                  min="0"
-                  max="55"
+                  min="1"
+                  max="54"
                   step="1"
                   onchange="updateTextPeople(this.value);"
                   id="peopleInput"
@@ -173,7 +173,7 @@
       prevOutsideTemp = outsideTemp;
       prevInsideTemp = insideTemp;
       previousPeople = people;
-      const optimalTemp = await process_data(insideTemp,outsideTemp,people)
+      const optimalTemp = await process_data(prevInsideTemp,prevOutsideTemp,previousPeople)
     }
   }, 4000);
 </script>

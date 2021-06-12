@@ -41,7 +41,8 @@ def calculation():
 @cross_origin()
 def getCalculation():
    data = {'rules' : Fuzzy.listOfUsedRule,'insideTempMember':Fuzzy.getInsideTemp(),
-      'outsideTempMember':Fuzzy.getOutsideTemp(),'peopleMember':Fuzzy.getPeople()}
+      'outsideTempMember':Fuzzy.getOutsideTemp(),'peopleMember':Fuzzy.getPeople(),
+      "detail":Fuzzy.getLinguisticValue()}
    return jsonify(data),200
 
 
