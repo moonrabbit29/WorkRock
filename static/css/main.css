@@ -109,3 +109,20 @@ input[type=range].round::-webkit-slider-thumb {
  	opacity: 1;
   }
 }
+
+.setRules p{
+  color: white;
+  font-size: 18px;
+  font-style: normal;
+  font-weight:400;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+.maximum-implicant p{
+  color: white;
+  font-size: 18px;
+  font-style: normal;
+  font-weight:400;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
