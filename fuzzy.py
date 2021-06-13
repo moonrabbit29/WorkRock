@@ -18,7 +18,7 @@ class RoomTemp:
    @classmethod
    def coldMemberSetter(cls,temperature):
       if(temperature>0 and temperature<=10):
-         return (temperature-0)/(10-temperature)
+         return (temperature-0)/(10-0)
       elif(temperature>10 and temperature<20):
          return (20-temperature)/(20-10)
    
@@ -156,6 +156,8 @@ class Fuzzy :
    normal = list()
    listOfUsedRule = list()
    linguisticValueOfRule = list()
+   numeratorDict = dict()
+   denominatorDict = dict()
 
    @classmethod
    def getInsideTemp(cls) :
@@ -163,7 +165,7 @@ class Fuzzy :
    
    @classmethod
    def getOutsideTemp(cls):
-      return {'mild':OutsideTemp.mildMember,'normal':OutsideTemp.mildMember,'warm':OutsideTemp.warmMember}
+      return {'mild':OutsideTemp.mildMember,'normal':OutsideTemp.normalMember,'warm':OutsideTemp.warmMember}
    
    @classmethod
    def getPeople(cls):
@@ -173,6 +175,24 @@ class Fuzzy :
    def getLinguisticValue(cls):
       linguisticValueDict = {el : cls.linguisticValueOfRule[el] for el in range(len(cls.linguisticValueOfRule))}
       return linguisticValueDict
+   
+   @classmethod
+   def getDenoNomi(cls):
+      return {"numerator" : cls.numeratorDict , "denominator":cls.denominatorDict}
+   
+   @classmethod
+   def getDefuzyfikasi(cls):
+      response = dict()
+      response['cold'] = [i for i in cls.cold]
+      response['cold'].append(max(cls.cold))  if(cls.cold) else response['cold'].append(0)
+      response['quitecold'] = [i for i in cls.quiteCold]
+      response['quitecold'].append(max(cls.quiteCold)) if(cls.cold) else response['quitecold'].append(0)
+      response['mild'] = [i for i in cls.quiteMild]
+      response['mild'].append(max(cls.mild)) if(cls.mild) else response['mild'].append(0)
+      response['normal'] = [i for i in cls.normal]
+      response['normal'].append(max(cls.normal)) if(cls.normal) else response['normal'].append(0)
+      return response
+      
 
    @classmethod
    def valueIinitialization(cls,roomTemp,outsideTemp,numPeople):
@@ -186,10 +206,13 @@ class Fuzzy :
       cls.normal = list()
       cls.listOfUsedRule = list()
       cls.linguisticValueOfRule = list()
+      cls.numeratorDict = dict()
+      cls.denominatorDict = dict()
       RoomTemp.roomTemperatureMember(roomTemp)
       OutsideTemp.outsideTemperatureMember(outsideTemp)
       TotalPeople.totalPeopleMember(numPeople)
    
+
    @classmethod
    def normalSetter(cls,a,b,c) : 
       minValue = min(a,b,c)
@@ -429,12 +452,12 @@ class Fuzzy :
 
    #rule 37
       if(OutsideTemp.mildMember>0 and TotalPeople.fewMember>0):
-            cls.MildSetter(RoomTemp.hotMember,OutsideTemp.mildMember,TotalPeople.fewMember)
+            cls.mildSetter(RoomTemp.hotMember,OutsideTemp.mildMember,TotalPeople.fewMember)
             cls.listOfUsedRule.append(37)
       
       #rule 38
       if(OutsideTemp.mildMember>0 and TotalPeople.moderateMember>0):
-            cls.MildSetter(RoomTemp.hotMember,OutsideTemp.mildMember,TotalPeople.moderateMember)
+            cls.mildSetter(RoomTemp.hotMember,OutsideTemp.mildMember,TotalPeople.moderateMember)
             cls.listOfUsedRule.append(38)
 
       #rule 39
@@ -509,14 +532,23 @@ class Fuzzy :
 
          except Exception as e: 
             break
-      
+      cls.numeratorDict["data"] =''
+      cls.denominatorDict["data"] = ''
       for i in checkLst : 
          numerator += sum(membershipOutput[i]) * maxList[i]
          denominator += len(membershipOutput[i])*maxList[i]
+         memberStr = [str(i) for i in membershipOutput[i]]
+         cls.numeratorDict["data"] += '(' + ' + '.join(memberStr) + ')' + ' * {}'.format(maxList[i]) + ' + '
+         cls.denominatorDict['data'] += '{} * {} + '.format(len(membershipOutput[i]),maxList[i])
       for i,tuplee in lstTuple:
          numerator+= i * tuplee
+         cls.numeratorDict["data"] +=  '{} * {} + '.format(i,tuplee)
          denominator += tuplee
+         cls.denominatorDict["data"] += '{} * 1 + '.format(tuplee)
       
+      cls.numeratorDict['value'] = numerator
+      cls.denominatorDict['value'] = denominator    
+      cls.numeratorDict['otuputValue'] = numerator/denominator  
       return numerator/denominator 
          
       

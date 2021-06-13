@@ -40,9 +40,11 @@ def calculation():
 @app.route('/api/get-calculation',methods=['GET'])
 @cross_origin()
 def getCalculation():
+   maximumImplicant = Fuzzy.getDefuzyfikasi()
+   denomi = Fuzzy.getDenoNomi()
    data = {'rules' : Fuzzy.listOfUsedRule,'insideTempMember':Fuzzy.getInsideTemp(),
       'outsideTempMember':Fuzzy.getOutsideTemp(),'peopleMember':Fuzzy.getPeople(),
-      "detail":Fuzzy.getLinguisticValue()}
+      "detail":Fuzzy.getLinguisticValue(),"maximum-Implicant":maximumImplicant,"defuzifikasi":denomi}
    return jsonify(data),200
 
 

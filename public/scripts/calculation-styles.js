@@ -1,9 +1,14 @@
 const fuzzificationResult = $("#fuzzificationResultContainer")[0]
-const rulesUsed = $("#rulesUsed")[0]
+const rulesUsed = $("#setRules")[0]
+const maximumImplicant = $('#maximum-implicant')[0]
+const defuzifikasiMamdani = $('#defuzifikasi-mamdani')[0]
 let rulesSet;
 
 window.addEventListener('load',async ()=>{
    fuzzificationResult.hidden = true
+   $('#ruleContainer')[0].hidden = true
+   rulesUsed.hidden = true
+   $('#defuzifikasi-mamdani-container')[0].hidden =true
    $.ajax({
       url: "http://localhost:5000/api/get-calculation",
       contentType: "application/json;charset=utf-8",
@@ -17,19 +22,85 @@ window.addEventListener('load',async ()=>{
         const roomTempHTML = $('#roomTempContainer')[0]
         const outsideTempHTML = $('#outsideTempContainer')[0]
         const peopleHTML = $('#peopleMemberContainer')[0]
-        console.log(roomTempHTML)
         roomTempHTML.innerHTML = roomTempView(roomTempMember)
         outsideTempHTML.innerHTML = outsideTempView(outsideTempMember)
         peopleHTML.innerHTML = peopleMemberView(peopleMember)
         rulesView(data.rules,data.detail)
+        maximumOutputView(data['maximum-Implicant'])
+        defuzifikasiView(data.defuzifikasi)
         fuzzificationResult.hidden = false
+        rulesUsed.hidden = false
+        $('#defuzifikasi-mamdani-container')[0].hidden=false
+        $('#ruleContainer')[0].hidden = false
         
       },
       type: "GET",
     });
 })
 
-var countDecimals = function (value) { 
+const defuzifikasiView = (defuzifikasi)=>{
+  const numerator = defuzifikasi.numerator.data.replace(/\+ $/,"")
+  const denominator = defuzifikasi.denominator.data.replace(/\+ $/,"")
+  defuzifikasiMamdani.innerHTML += `<div class="mid mr-3 text-center text-light" style="margin-left:10px; margin-left:10px">
+                                        ${numerator}
+                                    <hr class="text-light">
+                                      ${denominator} 
+                                      </div>
+                                      <div class="text-light text-center" style="margin-left:10px; margin-left:10px">
+                                          =
+                                      </div>
+                                      <div class="right text-center text-light">
+                                          ${defuzifikasi.numerator.value}
+                                          <hr class="elegant-color text-light">
+                                          ${defuzifikasi.denominator.value}
+                                      </div>
+                                      <div class="left text-light" style="margin-left:10px; margin-left:10px">  = ${defuzifikasi.numerator.otuputValue} </div>  
+                                        `
+}
+
+const maximumOutputView = (fuzzyOutput)=>{
+  console.log(fuzzyOutput)
+  const dingin = (e)=>{
+    let stringConstruct=''
+    for(let i=0;i<e.length-1;i++){
+        stringConstruct+=` µDingin[${e[i]}] V`
+    }
+    stringConstruct = stringConstruct.slice(0,-1)
+    return (e.length==1||e.length==0) ?' µDingin[0]' : stringConstruct
+  }
+  const cukup_dingin = (e)=>{
+    let stringConstruct=''
+    for(let i=0;i<e.length-1;i++){
+        stringConstruct+=` µCukupDingin[${e[i]}] V`
+    }
+    stringConstruct = stringConstruct.slice(0,-1)
+    return (e.length==1||e.length==0) ? 'µCukupDingin[0]' : stringConstruct
+  }
+  const sejuk = (e)=>{
+    let stringConstruct=''
+    for(let i=0;i<e.length-1;i++){
+        stringConstruct+=` µSejuk[${e[i]}] V`
+    }
+    stringConstruct = stringConstruct.slice(0,-1)
+    return (e.length==1||e.length==0)?'µSejuk[0]' : stringConstruct
+  }
+  const normal= (e)=>{
+    let stringConstruct=''
+    for(let i=0;i<e.length-1;i++){
+        stringConstruct+=`µNormal[${e[i]}] V`
+    }
+    stringConstruct = stringConstruct.slice(0,-1)
+    return (e.length==1||e.length==0) ?' µNormal[0]'   : stringConstruct
+  }
+
+  maximumImplicant.innerHTML += "<p>µDingin = "+ dingin(fuzzyOutput.cold) + "</P> <br>"
+  maximumImplicant.innerHTML += "<p>µCukupDingin = " + cukup_dingin(fuzzyOutput.quitecold) + "</p><br>"
+  maximumImplicant.innerHTML += "<p>µSejuk = " + sejuk(fuzzyOutput.mild) + "</p><br>"
+  maximumImplicant.innerHTML += "<p>µNormal = "+ normal(fuzzyOutput.normal)+"</p><br>"
+
+}
+
+const countDecimals = function (value) { 
   if ((value % 1) != 0) 
       return value.toString().split(".")[1].length;  
   return 0;
@@ -43,9 +114,17 @@ function getRulesJSON(){
 const rulesView = async (rules,detail) => {
   try{
     await getRulesJSON()
-    const rulesHTML = $('#setRules')[0]
     rules.forEach((el,index) => {
-          rulesHTML.innerHTML += `<p>${el}. ${rulesSet[el].rules}</p>`
+          const detailedRule = rulesSet[el].description.split(' ')
+          rulesUsed.innerHTML += `<p>${el}. ${rulesSet[el].rules}</p>
+                                  <br>
+                                  <p>Detail : <br>
+                                  <p>${detailedRule[0]} : (${detail[index][0]})</p>
+                                  <p>${detailedRule[1]} : (${detail[index][1]})</p>
+                                  <p>${detailedRule[2]} : (${detail[index][2]})</p>
+                                  <p> MINIMAL VALUE : ${detail[index][3]} </p>
+                                  <br>
+                                  `
     });
   }catch(err){
     console.log(err)
