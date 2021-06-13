@@ -2,227 +2,227 @@
    "1" :
    {
       "rules" : "If suhu_ruangan = dingin and suhu_luar_ruangan = sejuk and orang_dalam_ruangan = sedikit Then Suhu_ac = normal",
-      "description" : "dingin sejuk sedikit"
+      "description" : "suhu ruangan:dingin;suhu luar ruangan:sejuk;jumlah orang: sedikit;suhu ac:normal"
    },
    "2":
    {
       "rules" : "If suhu_ruangan = dingin and suhu_luar_ruangan = sejuk and orang_dalam_ruangan = sedang Then Suhu_ac = normal",
-      "description" : "dingin sejuk sedang"
+      "description" : "suhu ruangan:dingin;suhu luar ruangan:sejuk;jumlah orang:sedang;suhu ac:normal"
    },
    "3":
    {
       "rules" : "If suhu_ruangan = dingin and suhu_luar_ruangan = sejuk and orang_dalam_ruangan = banyak Then Suhu_ac = cukup_sejuk",
-      "description" : "dingin sejuk banyak"
+      "description" : "suhu ruangan:dingin;suhu luar ruangan:sejuk;jumlah orang:banyak;suhu ac:cukup sejuk"
    },
    "4":
    {
       "rules" : "If suhu_ruangan = dingin and suhu_luar_ruangan = normal and orang_dalam_ruangan = sedikit Then Suhu_ac = cukup_sejuk",
-      "description" : "dingin normal sedikit"
+      "description" : "suhu ruangan:dingin;suhu luar ruangan:normal;jumlah orang:sedikit;suhu ac:cukup sejuk"
    },
    "5":
    {
       "rules" : "If suhu_ruangan = dingin and suhu_luar_ruangan = normal and orang_dalam_ruangan = sedang Then Suhu_ac = cukup_sejuk",
-      "description" : "dingin normal sedang"
+      "description" : "suhu ruangan:dingin;suhu luar ruangan:normal;jumlah orang:sedang;suhu ac:cukup sejuk"
    },
    "6":
    {
       "rules" : "If suhu_ruangan = dingin and suhu_luar_ruangan = normal and orang_dalam_ruangan = banyak Then Suhu_ac = sejuk",
-      "description" : "dingin normal banyak"
+      "description" : "suhu ruangan:dingin;suhu luar ruangan:normal;jumlah orang:banyak;suhu ac:sejuk"
    },
    "7":
    {
       "rules" : "If suhu_ruangan = dingin and suhu_luar_ruangan = hangat and orang_dalam_ruangan = sedikit Then Suhu_ac = sejuk",
-      "description" : "dingin hangat sedikit"
+      "description" : "suhu ruangan:dingin;suhu luar ruangan:hangat;jumlah orang:sedikit;suhu ac:sejuk"
    },
    "8":
    {
       "rules" : "If suhu_ruangan = dingin and suhu_luar_ruangan = hangat and orang_dalam_ruangan = sedang Then Suhu_ac = sejuk",
-      "description" : "dingin hangat sedang"
+      "description" : "suhu ruangan:dingin;suhu luar ruangan:hangat;jumlah orang:sedang;suhu ac:sejuk"
    },
    "9":
    {
       "rules" : "If suhu_ruangan = dingin and suhu_luar_ruangan = hangat and orang_dalam_ruangan = banyak Then Suhu_ac = cukup_sejuk",
-      "description" : "dingin hangat banyak"
+      "description" : "suhu ruangan:dingin;suhu luar ruangan:hangat;jumlah orang:banyak;suhu ac:cukup sejuk"
    },
    "10":
    {
       "rules" : "If suhu_ruangan = sejuk and suhu_luar_ruangan = sejuk and orang_dalam_ruangan = sedikit Then Suhu_ac = cukup_sejuk",
-      "description" : "sejuk sejuk sedikit"
+      "description" : "suhu ruangan:sejuk;suhu luar ruangan:sejuk;jumlah orang:sedikit;suhu ac:cukup sejuk"
    },
    "11":
    {
       "rules" : "If suhu_ruangan = sejuk and suhu_luar_ruangan = sejuk and orang_dalam_ruangan = sedang Then Suhu_ac = cukup_sejuk",
-      "description" : "sejuk sejuk sedang"
+      "description" : "suhu ruangan:sejuk;suhu luar ruangan:sejuk;jumlah orang:sedang;suhu ac:cukup sejuk"
    },
    "12":
    {
       "rules" : "If suhu_ruangan = sejuk and suhu_luar_ruangan = sejuk and orang_dalam_ruangan = banyak Then Suhu_ac = sejuk",
-      "description" : "sejuk sejuk banyak"
+      "description" : "suhu ruangan:sejuk;suhu luar ruangan:sejuk;jumlah orang:banyak;suhu ac:sejuk"
    },
    "13":
    {
       "rules" : "If suhu_ruangan = sejuk and suhu_luar_ruangan = normal and orang_dalam_ruangan = sedikit Then Suhu_ac = sejuk",
-      "description" : "sejuk normal sedikit"
+      "description" : "suhu ruangan:sejuk;suhu luar ruangan:normal;jumlah orang:sedikit;suhu ac:sejuk"
    },
    "14":
    {
       "rules" : "If suhu_ruangan = sejuk and suhu_luar_ruangan = normal and orang_dalam_ruangan = sedang Then Suhu_ac = sejuk",
-      "description" : "sejuk normal sedang"
+      "description" : "suhu ruangan:sejuk;suhu luar ruangan:normal;jumlah orang:sedang;suhu ac:sejuk"
    },
    "15":
    {
       "rules" : "If suhu_ruangan = sejuk and suhu_luar_ruangan = normal and orang_dalam_ruangan = banyak Then Suhu_ac = cukup_dingin",
-      "description" : "sejuk normal banyak"
+      "description" : "suhu ruangan:sejuk;suhu luar ruangan:normal;jumlah orang:banyak;suhu ac:cukup dingin"
    },
    "16":
    {
       "rules" : "If suhu_ruangan = sejuk and suhu_luar_ruangan = hangat and orang_dalam_ruangan = sedikit Then Suhu_ac = cukup_dingin",
-      "description" : "sejuk hangat sedikit"
+      "description" : "suhu ruangan:sejuk;suhu luar ruangan:hangat;jumlah orang:sedikit;suhu ac:cukup dingin"
    },
    "17":
    {
       "rules" : "If suhu_ruangan = sejuk and suhu_luar_ruangan = hangat and orang_dalam_ruangan = sedang Then Suhu_ac = cukup_dingin",
-      "description" : "sejuk hangat sedang"
+      "description" : "suhu ruangan:sejuk;suhu luar ruangan:hangat;jumlah orang:sedang;suhu ac:cukup dingin"
    },
    "18":
    {
       "rules" : "If suhu_ruangan = sejuk and suhu_luar_ruangan = hangat and orang_dalam_ruangan = banyak Then Suhu_ac = dingin",
-      "description" : "sejuk hangat banyak"
+      "description" : "suhu ruangan:sejuk;suhu luar ruangan:hangat;jumlah orang:banyak;suhu ac:dingin"
    },
    "19":
    {
       "rules" : "If suhu_ruangan = normal and suhu_luar_ruangan = sejuk and orang_dalam_ruangan = sedikit Then Suhu_ac = cukup_sejuk",
-      "description" : "normal sejuk sedikit"
+      "description" : "suhu ruangan:normal;suhu luar ruangan:sejuk;jumlah orang:sedikit;suhu ac:cukup_sejuk"
    },
    "20":
    {
       "rules" : "If suhu_ruangan = normal and suhu_luar_ruangan = sejuk and orang_dalam_ruangan = sedang Then Suhu_ac = cukup_sejuk",
-      "description" : "normal sejuk sedang"
+      "description" : "suhu ruangan:normal;suhu luar ruangan:sejuk;jumlah orang:sedang;suhu ac:cukup_sejuk"
    },
    "21":
    {
       "rules" : "If suhu_ruangan = normal and suhu_luar_ruangan = sejuk and orang_dalam_ruangan = banyak Then Suhu_ac = sejuk",
-      "description" : "normal sejuk banyak"
+      "description" : "suhu ruangan:normal;suhu luar ruangan:sejuk;jumlah orang:banyak;suhu ac:sejuk"
    },
    "22":
    {
       "rules" : "If suhu_ruangan = normal and suhu_luar_ruangan = normal and orang_dalam_ruangan = sedikit Then Suhu_ac = sejuk",
-      "description" : "normal normal sedikit"
+      "description" : "suhu ruangan:normal;suhu luar ruangan:normal;jumlah orang:sedikit;suhu ac:sejuk"
    },
    "23":
    {
       "rules" : "If suhu_ruangan = normal and suhu_luar_ruangan = normal and orang_dalam_ruangan = sedang Then Suhu_ac = sejuk",
-      "description" : "normal normal sedang"
+      "description" : "suhu ruangan:normal;suhu luar ruangan:normal;jumlah orang:sedang;suhu ac:sejuk"
    },
    "24":
    {
       "rules" : "If suhu_ruangan = normal and suhu_luar_ruangan = normal and orang_dalam_ruangan = banyak Then Suhu_ac = cukup_dingin",
-      "description" : "normal normal banyak"
+      "description" : "suhu ruangan:normal;suhu luar ruangan:normal;jumlah orang:banyak;suhu ac:cukup_dingin"
    },
    "25":
    {
       "rules" : "If suhu_ruangan = normal and suhu_luar_ruangan = hangat and orang_dalam_ruangan = sedikit Then Suhu_ac = cukup_dingin",
-      "description" : "normal hangat sedikit"
+      "description" : "suhu ruangan:normal;suhu luar ruangan:hangat;jumlah orang:sedikit;suhu ac:cukup_dingin"
    },
    "26":
    {
       "rules" : "If suhu_ruangan = normal and suhu_luar_ruangan = hangat and orang_dalam_ruangan = sedang Then Suhu_ac = cukup_dingin",
-      "description" : "normal hangat sedang"
+      "description" : "suhu ruangan:normal;suhu luar ruangan:hangat;jumlah orang:sedang;suhu ac:cukup_dingin"
    },
    "27":
    {
       "rules" : "If suhu_ruangan = normal and suhu_luar_ruangan = hangat and orang_dalam_ruangan = banyak Then Suhu_ac = dingin",
-      "description" : "normal hangat banyak"
+      "description" : "suhu ruangan:normal;suhu luar ruangan:hangat;jumlah orang:banyak;suhu ac:dingin"
    },
    "28":
    {
       "rules" : "If suhu_ruangan = hangat and suhu_luar_ruangan = sejuk and orang_dalam_ruangan = sedikit Then Suhu_ac = cukup_sejuk",
-      "description" : "hangat sejuk sedikit"
+      "description" : "suhu ruangan:hangat;suhu luar ruangan:sejuk;jumlah orang:sedikit;suhu ac:cukup_sejuk"
    },
    "29":
    {
       "rules" : "If suhu_ruangan = hangat and suhu_luar_ruangan = sejuk and orang_dalam_ruangan = sedang Then Suhu_ac = cukup_sejuk",
-      "description" : "hangat sejuk sedang"
+      "description" : "suhu ruangan:hangat;suhu luar ruangan:sejuk;jumlah orang:sedang;suhu ac:cukup_sejuk"
    },
    "30":
    {
       "rules" : "If suhu_ruangan = hangat and suhu_luar_ruangan = sejuk and orang_dalam_ruangan = banyak Then Suhu_ac = sejuk",
-      "description" : "hangat sejuk banyak"
+      "description" : "suhu ruangan:hangat;suhu luar ruangan:sejuk;jumlah orang:banyak;suhu ac:sejuk"
    },
    "31":
    {
       "rules" : "If suhu_ruangan = hangat and suhu_luar_ruangan = normal and orang_dalam_ruangan = sedikit Then Suhu_ac = sejuk",
-      "description" : "hangat normal sedikit"
+      "description" : "suhu ruangan:hangat;suhu luar ruangan:normal;jumlah orang:sedikit;suhu ac:sejuk"
    },
    "32":
    {
       "rules" : "If suhu_ruangan = hangat and suhu_luar_ruangan = normal and orang_dalam_ruangan = sedang Then Suhu_ac = sejuk",
-      "description" : "hangat normal sedang"
+      "description" : "suhu ruangan:hangat;suhu luar ruangan:normal;jumlah orang:sedang;suhu ac:sejuk"
    },
    "33":
    {
       "rules" : "If suhu_ruangan = hangat and suhu_luar_ruangan = normal and orang_dalam_ruangan = banyak Then Suhu_ac = cukup_dingin",
-      "description" : "hangat normal banyak"
+      "description" : "suhu ruangan:hangat;suhu luar ruangan:normal;jumlah orang:banyak;suhu ac:cukup_dingin"
    },
    "34":
    {
       "rules" : "If suhu_ruangan = hangat and suhu_luar_ruangan = hangat and orang_dalam_ruangan = sedikit Then Suhu_ac = cukup_dingin",
-      "description" : "hangat hangat sedikit"
+      "description" : "suhu ruangan:hangat;suhu luar ruangan:hangat;jumlah orang:sedikit;suhu ac:cukup_dingin"
    },
    "35":
    {
       "rules" : "If suhu_ruangan = hangat and suhu_luar_ruangan = hangat and orang_dalam_ruangan = sedang Then Suhu_ac = cukup_dingin",
-      "description" : "hangat hangat sedang"
+      "description" : "suhu ruangan:hangat;suhu luar ruangan:hangat;jumlah orang:sedang;suhu ac:cukup_dingin"
    },
    "36":
    {
       "rules" : "If suhu_ruangan = hangat and suhu_luar_ruangan = hangat and orang_dalam_ruangan = banyak Then Suhu_ac = dingin",
-      "description" : "hangat hangat banyak"
+      "description" : "suhu ruangan:hangat;suhu luar ruangan:hangat;jumlah orang:banyak;suhu ac:dingin"
    },
    "37":
    {
       "rules" : "If suhu_ruangan = panas and suhu_luar_ruangan = sejuk and orang_dalam_ruangan = sedikit Then Suhu_ac = sejuk",
-      "description" : "panas sejuk sedikit"
+      "description" : "suhu ruangan:panas;suhu luar ruangan:sejuk;jumlah orang:sedikit;suhu ac:sejuk"
    },
    "38":
    {
       "rules" : "If suhu_ruangan = panas and suhu_luar_ruangan = sejuk and orang_dalam_ruangan = sedang Then Suhu_ac = sejuk",
-      "description" : "panas sejuk sedang"
+      "description" : "suhu ruangan:panas;suhu luar ruangan:sejuk;jumlah orang:sedang;suhu ac:sejuk"
    },
    "39":
    {
       "rules" : "If suhu_ruangan = panas and suhu_luar_ruangan = sejuk and orang_dalam_ruangan = banyak Then Suhu_ac = cukup_dingin",
-      "description" : "panas sejuk banyak"
+      "description" : "suhu ruangan:panas;suhu luar ruangan:sejuk;jumlah orang:banyak;suhu ac:cukup_dingin"
    },
    "40":
    {
       "rules" : "If suhu_ruangan = panas and suhu_luar_ruangan = normal and orang_dalam_ruangan = sedikit Then Suhu_ac = cukup_dingin",
-      "description" : "panas normal sedikit"
+      "description" : "suhu ruangan:panas;suhu luar ruangan:normal;jumlah orang:sedikit;suhu ac:cukup_dingin"
    },
    "41":
    {
       "rules" : "If suhu_ruangan = panas and suhu_luar_ruangan = normal and orang_dalam_ruangan = sedang Then Suhu_ac = cukup_dingin",
-      "description" : "panas normal sedang"
+      "description" : "suhu ruangan:panas;suhu luar ruangan:normal;jumlah orang:sedang;suhu ac:cukup_dingin"
    },
    "42":
    {
       "rules" : "If suhu_ruangan = panas and suhu_luar_ruangan = normal and orang_dalam_ruangan = banyak Then Suhu_ac = dingin",
-      "description" : "panas normal banyak"
+      "description" : "suhu ruangan:panas;suhu luar ruangan:normal;jumlah orang:banyak;suhu ac:dingin"
    },
    "43":
    {
       "rules" : "If suhu_ruangan = panas and suhu_luar_ruangan = hangat and orang_dalam_ruangan = sedikit Then Suhu_ac = dingin",
-      "description" : "panas hangat sedikit"
+      "description" : "suhu ruangan:panas;suhu luar ruangan:hangat;jumlah orang:sedikit;suhu ac:dingin"
    },
    "44":
    {
       "rules" : "If suhu_ruangan = panas and suhu_luar_ruangan = hangat and orang_dalam_ruangan = sedang Then Suhu_ac = dingin",
-      "description" : "panas hangat sedang"
+      "description" : "suhu ruangan:panas;suhu luar ruangan:hangat;jumlah orang:sedang;suhu ac:dingin"
    },
    "45":
    {
       "rules" : "If suhu_ruangan = panas and suhu_luar_ruangan = hangat and orang_dalam_ruangan = banyak Then Suhu_ac = dingin",
-      "description" : "panas hangat banyak"
+      "description" : "suhu ruangan:panas;suhu luar ruangan:hangat;jumlah orang:banyak;suhu ac:dingin"
    }
 
 
