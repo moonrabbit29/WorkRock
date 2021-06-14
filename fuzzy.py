@@ -512,6 +512,7 @@ class Fuzzy :
       # sampleQuiteMild = [20,21,22]
       # sampleNormal = [22,23,24]
       membershipOutput = {1:[12,13,14,15,16],2:[16,17,18],3:[18,19,20],4:[20,21,22],5:[22,23,24]}
+      membershipOutputConstant = {1:[12,13,14,15,16],2:[16,17,18],3:[18,19,20],4:[20,21,22],5:[22,23,24]}
       
       checkLst = []
       
@@ -528,13 +529,19 @@ class Fuzzy :
                for e in membershipOutput[checkLst[i]] : 
                   if(e in membershipOutput[checkLst[i+1]]):
                      membershipOutput[checkLst[i]].remove(e)
-                     lstTuple.append((e,cls.membershipOfOutput(membershipOutput[checkLst[i+1]][0]-1,
-                                             membershipOutput[checkLst[i+1]][-1]+1,e)))
+                     middleIndex = (len(membershipOutputConstant[checkLst[i+1]]) - 1)/2
+                     # print("middle index",middleIndex)
+                     # print("membership output",membershipOutputConstant[checkLst[i+1]][int(middleIndex)])
+                     lstTuple.append((e,cls.membershipOfOutput(membershipOutputConstant[checkLst[i+1]][0]-1,
+                                             membershipOutputConstant[checkLst[i+1]][int(middleIndex)],e)))
+                     membershipOutput[checkLst[i+1]].remove(e)
 
          except Exception as e: 
             break
       cls.numeratorDict["data"] =''
       cls.denominatorDict["data"] = ''
+      print(membershipOutput)
+      print(lstTuple)
       for i in checkLst : 
          numerator += sum(membershipOutput[i]) * maxList[i]
          denominator += len(membershipOutput[i])*maxList[i]
@@ -545,7 +552,7 @@ class Fuzzy :
          numerator+= i * tuplee
          cls.numeratorDict["data"] +=  '{} * {} + '.format(i,tuplee)
          denominator += tuplee
-         cls.denominatorDict["data"] += '{} * 1 + '.format(tuplee)
+         cls.denominatorDict["data"] += '{} * 1 + '.format(tuplee,3)
       
       cls.numeratorDict['value'] = numerator
       cls.denominatorDict['value'] = denominator    
