@@ -66,7 +66,13 @@ const maximumOutputView = (fuzzyOutput)=>{
         stringConstruct+=` µDingin[${e[i]}] V`
     }
     stringConstruct = stringConstruct.slice(0,-1)
-    return (e.length==1||e.length==0) ?' µDingin[0]' : stringConstruct
+    if (e.length==1){
+      return `µDingin[${e[0]}]`
+    }
+    else{
+      return (e.length==0) ?' µDingin[0]' : stringConstruct
+    }
+    
   }
   const cukup_dingin = (e)=>{
     let stringConstruct=''
@@ -74,7 +80,12 @@ const maximumOutputView = (fuzzyOutput)=>{
         stringConstruct+=` µCukupDingin[${e[i]}] V`
     }
     stringConstruct = stringConstruct.slice(0,-1)
-    return (e.length==1||e.length==0) ? 'µCukupDingin[0]' : stringConstruct
+    if (e.length==1){
+      return `µCukupDingin[${e[0]}]`
+    }
+    else{
+      return (e.length==0) ?' µCukupDingin[0]' : stringConstruct
+    }
   }
   const sejuk = (e)=>{
     let stringConstruct=''
@@ -82,7 +93,12 @@ const maximumOutputView = (fuzzyOutput)=>{
         stringConstruct+=` µSejuk[${e[i]}] V`
     }
     stringConstruct = stringConstruct.slice(0,-1)
-    return (e.length==1||e.length==0)?'µSejuk[0]' : stringConstruct
+    if (e.length==1){
+      return `µSejuk[${e[0]}]`
+    }
+    else{
+      return (e.length==0) ?' µSejuk[0]' : stringConstruct
+    }
   }
   const normal= (e)=>{
     let stringConstruct=''
@@ -90,7 +106,12 @@ const maximumOutputView = (fuzzyOutput)=>{
         stringConstruct+=`µNormal[${e[i]}] V`
     }
     stringConstruct = stringConstruct.slice(0,-1)
-    return (e.length==1||e.length==0) ?' µNormal[0]'   : stringConstruct
+    if (e.length==1){
+      return `µNormal[${e[0]}]`
+    }
+    else{
+      return (e.length==0) ?' µNormal[0]' : stringConstruct
+    }
   }
 
   maximumImplicant.innerHTML += "<p>µDingin = "+ dingin(fuzzyOutput.cold) + "</P> <br>"
@@ -115,14 +136,14 @@ const rulesView = async (rules,detail) => {
   try{
     await getRulesJSON()
     rules.forEach((el,index) => {
-          const detailedRule = rulesSet[el].description.split(' ')
+          const detailedRule = rulesSet[el].description.split(';')
           rulesUsed.innerHTML += `<p>${el}. ${rulesSet[el].rules}</p>
                                   <br>
                                   <p>Detail : <br>
-                                  <p>${detailedRule[0]} : (${detail[index][0]})</p>
-                                  <p>${detailedRule[1]} : (${detail[index][1]})</p>
-                                  <p>${detailedRule[2]} : (${detail[index][2]})</p>
-                                  <p> MINIMAL VALUE : ${detail[index][3]} </p>
+                                  <p>${detailedRule[0]}(${detail[index][0]})</p>
+                                  <p>${detailedRule[1]}(${detail[index][1]})</p>
+                                  <p>${detailedRule[2]}(${detail[index][2]})</p>
+                                  <p> Otuput ${detailedRule[3]}(${detail[index][3]}) </p>
                                   <br>
                                   `
     });

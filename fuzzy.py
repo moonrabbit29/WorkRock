@@ -521,6 +521,7 @@ class Fuzzy :
       for key,value in maxList.items() : 
          if value>0 : 
             checkLst.append(key)
+            
       for i in range(len(checkLst)):
          try :
             if(checkLst[i+1] - checkLst [i] == 1):
