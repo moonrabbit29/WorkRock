@@ -12,7 +12,7 @@
       * pip install virtualenv (skip this if you allready installed virtualenv package)
       * actiavate the python environtment (if you are using windows i suggest you to not using powershell use other terminal like cmd or gitbash or anything else) -> command -> . env/scripts/activate or if u use cmd : cd env/scripts -> then write activate
       * after activating your virtual environtment install the required package by using this command :
-      pip install requirements.txt
+      pip install -r requirements.txt
 
 ### run the server on development mode :
    #### python manage.py runserver
