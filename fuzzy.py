@@ -39,7 +39,7 @@ class RoomTemp:
    @classmethod
    def warmMemberSetter(cls,temperature):
       if(temperature>25 and temperature<=30):
-         return (temperature-20)/(25-20)
+         return (temperature-25)/(30-25)
       elif(temperature>30 and temperature<35):
          return (35-temperature)/(35-30)
    
