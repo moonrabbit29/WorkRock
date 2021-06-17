@@ -186,7 +186,7 @@ class Fuzzy :
       response['cold'] = [i for i in cls.cold]
       response['cold'].append(max(cls.cold))  if(cls.cold) else response['cold'].append(0)
       response['quitecold'] = [i for i in cls.quiteCold]
-      response['quitecold'].append(max(cls.quiteCold)) if(cls.cold) else response['quitecold'].append(0)
+      response['quitecold'].append(max(cls.quiteCold)) if(cls.quiteCold) else response['quitecold'].append(0)
       response['mild'] = [i for i in cls.quiteMild]
       response['mild'].append(max(cls.mild)) if(cls.mild) else response['mild'].append(0)
       response['normal'] = [i for i in cls.normal]
@@ -505,7 +505,7 @@ class Fuzzy :
    def defuzzifikasi(cls,maxList):
       numerator = 0
       denominator = 0 
-      sample = [12,13,14,15,16,17,18,19,20,21,22,23,24]
+      #sample = [12,13,14,15,16,17,18,19,20,21,22,23,24]
       # sampleCold = [12,13,14,15,16]
       # sampleQuiteCold = [16,17,18]
       # sampleMild = [18,19,20]
@@ -532,7 +532,7 @@ class Fuzzy :
                      middleIndex = (len(membershipOutputConstant[checkLst[i+1]]) - 1)/2
                      # print("middle index",middleIndex)
                      # print("membership output",membershipOutputConstant[checkLst[i+1]][int(middleIndex)])
-                     lstTuple.append((e,cls.membershipOfOutput(membershipOutputConstant[checkLst[i+1]][0]-1,
+                     lstTuple.append((e,cls.membershipOfOutput(membershipOutputConstant[checkLst[i+1]][0],
                                              membershipOutputConstant[checkLst[i+1]][int(middleIndex)],e)))
                      membershipOutput[checkLst[i+1]].remove(e)
 

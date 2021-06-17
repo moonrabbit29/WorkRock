@@ -59,7 +59,6 @@ const defuzifikasiView = (defuzifikasi)=>{
 }
 
 const maximumOutputView = (fuzzyOutput)=>{
-  console.log(fuzzyOutput)
   const dingin = (e)=>{
     let stringConstruct=''
     for(let i=0;i<e.length-1;i++){
@@ -113,11 +112,10 @@ const maximumOutputView = (fuzzyOutput)=>{
       return (e.length==0) ?' µNormal[0]' : stringConstruct
     }
   }
-
-  maximumImplicant.innerHTML += "<p>µDingin = "+ dingin(fuzzyOutput.cold) + "</P> <br>"
-  maximumImplicant.innerHTML += "<p>µCukupDingin = " + cukup_dingin(fuzzyOutput.quitecold) + "</p><br>"
-  maximumImplicant.innerHTML += "<p>µSejuk = " + sejuk(fuzzyOutput.mild) + "</p><br>"
-  maximumImplicant.innerHTML += "<p>µNormal = "+ normal(fuzzyOutput.normal)+"</p><br>"
+  maximumImplicant.innerHTML += "<p>µDingin = "+ dingin(fuzzyOutput.cold) + ` = ${fuzzyOutput.cold[fuzzyOutput.cold.length-1]} </P> <br>`
+  maximumImplicant.innerHTML += "<p>µCukupDingin = " + cukup_dingin(fuzzyOutput.quitecold) + `= ${fuzzyOutput.quitecold[fuzzyOutput.quitecold.length-1]} </P> <br>`
+  maximumImplicant.innerHTML += "<p>µSejuk = " + sejuk(fuzzyOutput.mild) + ` = ${fuzzyOutput.mild[fuzzyOutput.mild.length-1]} </P> <br>`
+  maximumImplicant.innerHTML += "<p>µNormal = "+ normal(fuzzyOutput.normal)+` = ${fuzzyOutput.normal[fuzzyOutput.normal.length-1]} </P> <br>`
 
 }
 
